@@ -1,32 +1,25 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.pages.LoginPage;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static util.TestUtil.generateRandomEmail;
 
-public class LoginTests {
+public class LoginTests extends BaseTest{
 
-    private WebDriver driver;
-
-    @BeforeClass
-    public void setUp() {
-        driver = new ChromeDriver();
-    }
+    LoginPage loginPage;
+    private String loginPageURL = "https://ecommerce-playground.lambdatest.io/index.php?route=account/login";
 
     @BeforeMethod
     public void beforeMethod() {
-        driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/login");
-
+        System.out.println("Navigate to " + loginPageURL);
+        driver.get(loginPageURL);
+        driver.manage().window().fullscreen();
+        loginPage = new LoginPage(driver);
     }
 
     @Test
     public void invalidCredentialsTest() {
-        LoginPage loginPage = new LoginPage(driver);
-
         loginPage.insertEmail(generateRandomEmail());
         loginPage.insertPassword("randomPassword");
         loginPage.clickLogin();
