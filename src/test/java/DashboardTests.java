@@ -37,7 +37,25 @@ public class DashboardTests extends BaseTest{
                 "First section header text is not the expected one");
         Assert.assertEquals(dashboardPage.getEditAccountElementText(), expectedEditAccountElementText,
                 "Edit account element text is not the expected one");
+
+        String expectedChangePasswordElementText = "Change your password";
+        Assert.assertEquals(dashboardPage.getChangePasswordElementText(), expectedChangePasswordElementText,
+                "Change password element text is not the expected one");
+
+        String expectedModifyAddressElementText = "Modify your address book entries";
+        Assert.assertEquals(dashboardPage.getModifyAddressElementText(), expectedModifyAddressElementText,
+                "Modify your address element text is not the expected one");
+
+        String expectedMyWishlistElementText = "Modify your wish list";
+        Assert.assertEquals(dashboardPage.getMyWishlistElementText(), expectedMyWishlistElementText,
+                "Modify your wishlist element text is not the expected one");
+
+        String expectedNewsletterElementText = "Subscribe / unsubscribe to newsletter";
+        Assert.assertEquals(dashboardPage.getNewsletterElementText(), expectedNewsletterElementText,
+                "Subscribe / unsubscribe to newsletter text is not the expected one");
     }
+
+
 
     public void createAccount() {
         driver.get(registerUrl);

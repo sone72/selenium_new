@@ -27,4 +27,19 @@ public class LoginTests extends BaseTest{
         String expectedValue = "Warning: No match for E-Mail Address and/or Password.";
         Assert.assertEquals(actualValue, expectedValue, "Error message is not the expected one.");
     }
+    @Test
+    public void validCredentialsTest () {
+        loginPage.insertEmail(generateRandomEmail());
+        loginPage.insertPassword("Password123!");
+        loginPage.clickLogin();
+    }
+    @Test
+    public void validEmailTest() {
+        loginPage.insertEmail("johndow-8039842604272496244@email.com");
+        loginPage.insertPassword("pas123");
+        loginPage.clickLogin();
+        String actualValue = loginPage.getErrorMessage();
+        String expectedValue = "Warning: No match for E-Mail Address and/or Password.";
+        Assert.assertEquals(actualValue, expectedValue, "Error message is not the expected one.");
+    }
 }
